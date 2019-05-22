@@ -1,5 +1,6 @@
 AUTHORS="Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>"
 import numpy
+import os
 import glob
 import sys
 
@@ -26,40 +27,28 @@ except:
     def HTML(x):
         return x
 
-try:
-    import git
-    def get_git_metadata():
-        if not get_git_metadata.cached:
-            get_git_metadata.repo = git.Repo(search_parent_directories=True)
-            get_git_metadata.sha = get_git_metadata.repo.head.object.hexsha
-            get_git_metadata.modified= get_git_metadata.repo.is_dirty()
-            get_git_metadata.activeBranch = get_git_metadata.repo.active_branch
-            get_git_metadata.url = get_git_metadata.repo.remotes.origin.url
-            get_git_metadata.cached = True
-            get_git_metadata.short_sha = get_git_metadata.repo.git.rev_parse(get_git_metadata.sha, short=1)
+import git
+def get_git_metadata():
+    if not get_git_metadata.cached:
+        get_git_metadata.repo = git.Repo(search_parent_directories=True)
+        get_git_metadata.sha = get_git_metadata.repo.head.object.hexsha
+        get_git_metadata.modified= get_git_metadata.repo.is_dirty()
+        get_git_metadata.activeBranch = get_git_metadata.repo.active_branch
+        get_git_metadata.url = get_git_metadata.repo.remotes.origin.url
+        get_git_metadata.cached = True
+        get_git_metadata.short_sha = get_git_metadata.repo.git.rev_parse(get_git_metadata.sha, short=1)
 
-        return {'git_commit': str(get_git_metadata.sha),
+    return {'git_commit': str(get_git_metadata.sha),
                 'git_repo_modified':str(get_git_metadata.modified),
                 'git_branch' : str(get_git_metadata.activeBranch),
                 'git_remote_url' : str(get_git_metadata.url),
                 'git_short_commit' : str(get_git_metadata.short_sha)}
 
-    get_git_metadata.cached = False
+get_git_metadata.cached = False
 
 
-    def add_git_information(filename):
-        writeMetadata(filename, get_git_metadata())
-
-except:
-    def add_git_information(filename):
-        pass
-
-    def get_git_metadata():
-        return {'git_commit': 'unknown',
-                'git_repo_modified':'unknown',
-                'git_branch' : 'unknown',
-                'git_remote_url' : 'unknown',
-                'git_short_commit': "unknown"}
+def add_git_information(filename):
+    writeMetadata(filename, get_git_metadata())
 
 
 def get_stacktrace_str():
@@ -178,6 +167,10 @@ def get_current_title():
         return ''
 
 def savePlot(name):
+    for folder in ['img', 'img_tikz']:
+        if not os.path.exists(folder):
+            os.mkdir(folder)
+    
     original_name = copy.deepcopy(name)
     if savePlot.disabled:
         return
@@ -230,12 +223,12 @@ def savePlot(name):
     with RedirectStdStreamsToNull():
         if savePlot.saveTikz:
             try:
-                matplotlib2tikz.save('../img_tikz/' + name + '.xyz',
+                matplotlib2tikz.save('img_tikz/' + name + '.xyz',
                                      figureheight = '\\figureheight',
                                      figurewidth = '\\figurewidth',
                                      show_info = False)
 
-                with open ('../img_tikz/' + name + '.xyz', 'a') as f:
+                with open ('img_tikz/' + name + '.xyz', 'a') as f:
                     f.write("\n\n")
                     f.write("%% INCLUDE THE COMMENTS AT THE END WHEN COPYING\n")
                     f.write("%%%%%%%%%%%%%TITLE%%%%%%%%%%%%%%%%%\n")
@@ -283,7 +276,7 @@ def savePlot(name):
 
 
 
-    savenamepng = '../img/' + name + '.png'
+    savenamepng = 'img/' + name + '.png'
     plt.savefig(savenamepng, bbox_inches='tight')
 
     writeMetadata(savenamepng, {'Copyright' : 'Copyright, {}'.format(AUTHORS),
