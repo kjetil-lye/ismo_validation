@@ -2,6 +2,7 @@ import ismo.submit
 import ismo.submit.defaults
 import sys
 
+
 class ProjectileMotionCommands(ismo.submit.defaults.Commands):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -44,18 +45,22 @@ Submits all the jobs for the sine experiments
     parser.add_argument('--starting_sample', type=int, default=0,
                         help='Starting sample')
 
+    parser.add_argument('--generator', type=str, default='monte-carlo',
+                        help='Generator name')
+
     args = parser.parse_args()
 
     submitter = ismo.submit.create_submitter(args.submitter, args.chain_name, dry_run=args.dry_run)
 
     commands = ProjectileMotionCommands(dimension=2,
-                            training_parameter_config_file='training_parameters.json',
-                            optimize_target_file='objective.py',
-                            optimize_target_class='Objective',
-                            python_command=sys.executable,
-                            starting_sample=args.starting_sample,
-                            prefix=args.prefix
-                            )
+                                        training_parameter_config_file='training_parameters.json',
+                                        optimize_target_file='objective.py',
+                                        optimize_target_class='Objective',
+                                        python_command=sys.executable,
+                                        starting_sample=args.starting_sample,
+                                        prefix=args.prefix,
+                                        sample_generator_name=args.generator
+                                        )
 
     chain = ismo.submit.Chain(args.number_of_samples_per_iteration, submitter,
                               commands=commands)
