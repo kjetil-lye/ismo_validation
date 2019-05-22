@@ -52,4 +52,4 @@ def p_alpha_v_0_samples(h_0, x_0, v_0, alpha, g, C_D, rho, dt, r, m):
         u[i] = u_temp
         t[i] = t_temp
 
-    return u, t
+    return u

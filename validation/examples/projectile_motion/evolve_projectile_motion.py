@@ -1,5 +1,5 @@
 import numpy as np
-
+import ball
 if __name__ == '__main__':
     # Parameters we use
     x_0 = 0.2
