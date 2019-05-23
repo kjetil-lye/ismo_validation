@@ -1,5 +1,17 @@
 import numpy as np
 import ball
+
+def scale(y, a, b):
+    """
+    Scales the vector y (assumed to be in [0,1]) to [a,b]
+    :param y:
+    :param a:
+    :param b:
+    :return:
+    """
+
+    return a*y + (b-a)*y
+
 if __name__ == '__main__':
     # Parameters we use
     x_0 = 0.2
@@ -29,8 +41,8 @@ Runs the function sin(4*pi*x) on the input parameters
     parameters = np.loadtxt(args.input_parameters_file)
 
     values = ball.p_alpha_v_0_samples(h_0, x_0,
-                                      parameters[:,0],
-                                      parameters[:,1],
+                                      scale(parameters[:,0], 10, 30),
+                                      scale(parameters[:,1], 0, np.pi/2),
                                       g, C_D, rho, dt, r, m)
     
     np.savetxt(args.output_values_file, values)
