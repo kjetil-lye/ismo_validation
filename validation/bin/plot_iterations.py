@@ -66,11 +66,11 @@ if __name__ == '__main__':
                 iteration_range = np.arange(0, iterations)
                 plt.errorbar(iteration_range, np.mean(min_value_per_iteration, 1),
                              yerr=np.std(min_value_per_iteration, 1), label='ISMO',
-                             fmt='o')
+                             fmt='o', uplims=True, lolims=True)
 
                 plt.errorbar(iteration_range, np.mean(min_value_per_iteration_competitor, 1),
                              yerr=np.std(min_value_per_iteration_competitor, 1), label='DNN+Opt',
-                             fmt='*')
+                             fmt='*', uplims=True, lolims=True)
 
                 plt.xlabel("Iteration $k$")
                 plt.ylabel("$\\mathbb{E}( J(x_k^*))$")
