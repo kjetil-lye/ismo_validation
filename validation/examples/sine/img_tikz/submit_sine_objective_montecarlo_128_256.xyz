@@ -23,69 +23,181 @@ ymin=-1.00025294377473, ymax=-0.999488811714053,
 ytick style={color=black}
 ]
 \path [draw=color0, semithick]
-(axis cs:0,-1.00010710981361)
+(axis cs:0,-0.999856367181087)
 --(axis cs:0,-0.999605624548566);
 
 \path [draw=color0, semithick]
-(axis cs:1,-1.00008218022905)
+(axis cs:1,-0.999888039270396)
 --(axis cs:1,-0.999693898311742);
 
 \path [draw=color0, semithick]
-(axis cs:2,-1.00008550304019)
+(axis cs:2,-0.999890692142588)
 --(axis cs:2,-0.999695881244985);
 
 \path [draw=color0, semithick]
-(axis cs:3,-1.00004450904179)
+(axis cs:3,-0.99991862057065)
 --(axis cs:3,-0.999792732099509);
 
 \path [draw=color0, semithick]
-(axis cs:4,-1.00005141827294)
+(axis cs:4,-0.99993245984839)
 --(axis cs:4,-0.999813501423839);
 
 \path [draw=color0, semithick]
-(axis cs:5,-1.00006095785142)
+(axis cs:5,-0.999946169671944)
 --(axis cs:5,-0.999831381492474);
 
 \path [draw=color0, semithick]
-(axis cs:6,-1.00004219008421)
+(axis cs:6,-0.999955949500387)
 --(axis cs:6,-0.999869708916565);
 
 \path [draw=color0, semithick]
-(axis cs:7,-1.00004219008421)
+(axis cs:7,-0.999955949500387)
 --(axis cs:7,-0.999869708916565);
 
+\path [draw=color0, semithick]
+(axis cs:0,-1.00010710981361)
+--(axis cs:0,-0.999856367181087);
+
+\path [draw=color0, semithick]
+(axis cs:1,-1.00008218022905)
+--(axis cs:1,-0.999888039270396);
+
+\path [draw=color0, semithick]
+(axis cs:2,-1.00008550304019)
+--(axis cs:2,-0.999890692142588);
+
+\path [draw=color0, semithick]
+(axis cs:3,-1.00004450904179)
+--(axis cs:3,-0.99991862057065);
+
+\path [draw=color0, semithick]
+(axis cs:4,-1.00005141827294)
+--(axis cs:4,-0.99993245984839);
+
+\path [draw=color0, semithick]
+(axis cs:5,-1.00006095785142)
+--(axis cs:5,-0.999946169671944);
+
+\path [draw=color0, semithick]
+(axis cs:6,-1.00004219008421)
+--(axis cs:6,-0.999955949500387);
+
+\path [draw=color0, semithick]
+(axis cs:7,-1.00004219008421)
+--(axis cs:7,-0.999955949500387);
+
 \path [draw=color1, semithick]
-(axis cs:0,-1.00021821049925)
+(axis cs:0,-0.999870877744392)
 --(axis cs:0,-0.999523544989539);
 
 \path [draw=color1, semithick]
-(axis cs:1,-1.00004023987045)
+(axis cs:1,-0.999936944410169)
 --(axis cs:1,-0.999833648949885);
 
 \path [draw=color1, semithick]
-(axis cs:2,-1.00007947013529)
+(axis cs:2,-0.999950149791761)
 --(axis cs:2,-0.999820829448233);
 
 \path [draw=color1, semithick]
-(axis cs:3,-1.0000191846422)
+(axis cs:3,-0.999975867549844)
 --(axis cs:3,-0.999932550457486);
 
 \path [draw=color1, semithick]
-(axis cs:4,-1.00002627483155)
+(axis cs:4,-0.999975328184621)
 --(axis cs:4,-0.999924381537688);
 
 \path [draw=color1, semithick]
-(axis cs:5,-1.00000962778076)
+(axis cs:5,-0.999987813316845)
 --(axis cs:5,-0.999965998852936);
 
 \path [draw=color1, semithick]
-(axis cs:6,-1.00000826559878)
+(axis cs:6,-0.99999023398125)
 --(axis cs:6,-0.99997220236372);
 
 \path [draw=color1, semithick]
-(axis cs:7,-1.00000912776154)
+(axis cs:7,-0.999993068036915)
 --(axis cs:7,-0.999977008312291);
 
+\path [draw=color1, semithick]
+(axis cs:0,-1.00021821049925)
+--(axis cs:0,-0.999870877744392);
+
+\path [draw=color1, semithick]
+(axis cs:1,-1.00004023987045)
+--(axis cs:1,-0.999936944410169);
+
+\path [draw=color1, semithick]
+(axis cs:2,-1.00007947013529)
+--(axis cs:2,-0.999950149791761);
+
+\path [draw=color1, semithick]
+(axis cs:3,-1.0000191846422)
+--(axis cs:3,-0.999975867549844);
+
+\path [draw=color1, semithick]
+(axis cs:4,-1.00002627483155)
+--(axis cs:4,-0.999975328184621);
+
+\path [draw=color1, semithick]
+(axis cs:5,-1.00000962778076)
+--(axis cs:5,-0.999987813316845);
+
+\path [draw=color1, semithick]
+(axis cs:6,-1.00000826559878)
+--(axis cs:6,-0.99999023398125);
+
+\path [draw=color1, semithick]
+(axis cs:7,-1.00000912776154)
+--(axis cs:7,-0.999993068036915);
+
+\addplot [semithick, color0]
+table {%
+0 -0.999605624548566
+1 -0.999693898311742
+2 -0.999695881244985
+3 -0.999792732099509
+4 -0.999813501423839
+5 -0.999831381492474
+6 -0.999869708916565
+7 -0.999869708916565
+};
+\addlegendentry{DNN+Opt}
+\addplot [semithick, color0]
+table {%
+0 -1.00010710981361
+1 -1.00008218022905
+2 -1.00008550304019
+3 -1.00004450904179
+4 -1.00005141827294
+5 -1.00006095785142
+6 -1.00004219008421
+7 -1.00004219008421
+};
+\addlegendentry{DNN+Opt}
+\addplot [semithick, color1]
+table {%
+0 -0.999523544989539
+1 -0.999833648949885
+2 -0.999820829448233
+3 -0.999932550457486
+4 -0.999924381537688
+5 -0.999965998852936
+6 -0.99997220236372
+7 -0.999977008312291
+};
+\addlegendentry{DNN+Opt}
+\addplot [semithick, color1]
+table {%
+0 -1.00021821049925
+1 -1.00004023987045
+2 -1.00007947013529
+3 -1.0000191846422
+4 -1.00002627483155
+5 -1.00000962778076
+6 -1.00000826559878
+7 -1.00000912776154
+};
+\addlegendentry{DNN+Opt}
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks]
 table {%
 0 -0.999856367181087
@@ -117,7 +229,7 @@ table {%
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 154759bd89db79f5a8a8481ad8ef51c894d00117
+Commit: 1cf67b36d121b5a0157e364668024bf1c2745c0b
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-19};
 \node at (axis cs:0.2,0.93)[
@@ -125,7 +237,7 @@ Hostname: ada-19};
   anchor=south east,
   text=white!50.19607843137255!black,
   rotate=0.0
-]{@1547};
+]{@1cf6};
 \end{axis}
 
 \end{tikzpicture}
@@ -138,14 +250,14 @@ Hostname: ada-19};
 %% script name: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py
 %% ALWAYS INCLUDE THE COMMENTS WHEN COPYING THIS PLOT
 %% DO NOT REMOVE THE COMMENTS BELOW!
-%% GIT git_commit : 154759bd89db79f5a8a8481ad8ef51c894d00117
+%% GIT git_commit : 1cf67b36d121b5a0157e364668024bf1c2745c0b
 %% GIT git_repo_modified : False
 %% GIT git_branch : master
 %% GIT git_remote_url : git@github.com:kjetil-lye/ismo_validation.git
-%% GIT git_short_commit : 1547
+%% GIT git_short_commit : 1cf6
 %% working_directory : /scratch/userdata/klye/ismo_validation/validation/examples/sine
 %% hostname : ada-19
-%% generated_on_date : 2019-05-27 19:52:07.388873
+%% generated_on_date : 2019-05-27 20:01:56.526456
 %% accessed_environment:
 %% additional_parameters:
 %% python_version: 

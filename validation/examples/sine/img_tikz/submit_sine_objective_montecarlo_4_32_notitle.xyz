@@ -23,69 +23,181 @@ ytick={-1.005,-1.0025,-1,-0.9975,-0.995,-0.9925,-0.99,-0.9875,-0.985,-0.9825},
 yticklabels={−1.0050,−1.0025,−1.0000,−0.9975,−0.9950,−0.9925,−0.9900,−0.9875,−0.9850,−0.9825}
 ]
 \path [draw=color0, semithick]
-(axis cs:0,-1.00305919246565)
+(axis cs:0,-0.994415518784577)
 --(axis cs:0,-0.985771845103499);
 
 \path [draw=color0, semithick]
-(axis cs:1,-1.00342039260234)
+(axis cs:1,-0.996669814327556)
 --(axis cs:1,-0.989919236052775);
 
 \path [draw=color0, semithick]
-(axis cs:2,-1.00233097334504)
+(axis cs:2,-0.997786961518386)
 --(axis cs:2,-0.993242949691737);
 
 \path [draw=color0, semithick]
-(axis cs:3,-1.00137270034524)
+(axis cs:3,-0.999160174514077)
 --(axis cs:3,-0.996947648682915);
 
 \path [draw=color0, semithick]
-(axis cs:4,-1.00011164798384)
+(axis cs:4,-0.999684989193228)
 --(axis cs:4,-0.999258330402615);
 
 \path [draw=color0, semithick]
-(axis cs:5,-1.00015067779947)
+(axis cs:5,-0.999727910212481)
 --(axis cs:5,-0.999305142625493);
 
 \path [draw=color0, semithick]
-(axis cs:6,-1.00007389609665)
+(axis cs:6,-0.999816345195068)
 --(axis cs:6,-0.999558794293489);
 
 \path [draw=color0, semithick]
-(axis cs:7,-1.00008030371824)
+(axis cs:7,-0.999821509118279)
 --(axis cs:7,-0.99956271451832);
 
+\path [draw=color0, semithick]
+(axis cs:0,-1.00305919246565)
+--(axis cs:0,-0.994415518784577);
+
+\path [draw=color0, semithick]
+(axis cs:1,-1.00342039260234)
+--(axis cs:1,-0.996669814327556);
+
+\path [draw=color0, semithick]
+(axis cs:2,-1.00233097334504)
+--(axis cs:2,-0.997786961518386);
+
+\path [draw=color0, semithick]
+(axis cs:3,-1.00137270034524)
+--(axis cs:3,-0.999160174514077);
+
+\path [draw=color0, semithick]
+(axis cs:4,-1.00011164798384)
+--(axis cs:4,-0.999684989193228);
+
+\path [draw=color0, semithick]
+(axis cs:5,-1.00015067779947)
+--(axis cs:5,-0.999727910212481);
+
+\path [draw=color0, semithick]
+(axis cs:6,-1.00007389609665)
+--(axis cs:6,-0.999816345195068);
+
+\path [draw=color0, semithick]
+(axis cs:7,-1.00008030371824)
+--(axis cs:7,-0.999821509118279);
+
 \path [draw=color1, semithick]
-(axis cs:0,-1.00201568887051)
+(axis cs:0,-0.996270781075269)
 --(axis cs:0,-0.990525873280031);
 
 \path [draw=color1, semithick]
-(axis cs:1,-1.002546121338)
+(axis cs:1,-0.997303504262732)
 --(axis cs:1,-0.992060887187465);
 
 \path [draw=color1, semithick]
-(axis cs:2,-1.00175869313287)
+(axis cs:2,-0.997660745173526)
 --(axis cs:2,-0.993562797214183);
 
 \path [draw=color1, semithick]
-(axis cs:3,-1.00202622497599)
+(axis cs:3,-0.997906919573643)
 --(axis cs:3,-0.993787614171297);
 
 \path [draw=color1, semithick]
-(axis cs:4,-1.00322661653724)
+(axis cs:4,-0.99670268784327)
 --(axis cs:4,-0.990178759149303);
 
 \path [draw=color1, semithick]
-(axis cs:5,-1.00105589394326)
+(axis cs:5,-0.998372920198133)
 --(axis cs:5,-0.995689946453005);
 
 \path [draw=color1, semithick]
-(axis cs:6,-1.00381697952072)
+(axis cs:6,-0.997232427266956)
 --(axis cs:6,-0.990647875013191);
 
 \path [draw=color1, semithick]
-(axis cs:7,-1.00167762454464)
+(axis cs:7,-0.998455419316348)
 --(axis cs:7,-0.995233214088059);
 
+\path [draw=color1, semithick]
+(axis cs:0,-1.00201568887051)
+--(axis cs:0,-0.996270781075269);
+
+\path [draw=color1, semithick]
+(axis cs:1,-1.002546121338)
+--(axis cs:1,-0.997303504262732);
+
+\path [draw=color1, semithick]
+(axis cs:2,-1.00175869313287)
+--(axis cs:2,-0.997660745173526);
+
+\path [draw=color1, semithick]
+(axis cs:3,-1.00202622497599)
+--(axis cs:3,-0.997906919573643);
+
+\path [draw=color1, semithick]
+(axis cs:4,-1.00322661653724)
+--(axis cs:4,-0.99670268784327);
+
+\path [draw=color1, semithick]
+(axis cs:5,-1.00105589394326)
+--(axis cs:5,-0.998372920198133);
+
+\path [draw=color1, semithick]
+(axis cs:6,-1.00381697952072)
+--(axis cs:6,-0.997232427266956);
+
+\path [draw=color1, semithick]
+(axis cs:7,-1.00167762454464)
+--(axis cs:7,-0.998455419316348);
+
+\addplot [semithick, color0]
+table {%
+0 -0.985771845103499
+1 -0.989919236052775
+2 -0.993242949691737
+3 -0.996947648682915
+4 -0.999258330402615
+5 -0.999305142625493
+6 -0.999558794293489
+7 -0.99956271451832
+};
+\addlegendentry{DNN+Opt}
+\addplot [semithick, color0]
+table {%
+0 -1.00305919246565
+1 -1.00342039260234
+2 -1.00233097334504
+3 -1.00137270034524
+4 -1.00011164798384
+5 -1.00015067779947
+6 -1.00007389609665
+7 -1.00008030371824
+};
+\addlegendentry{DNN+Opt}
+\addplot [semithick, color1]
+table {%
+0 -0.990525873280031
+1 -0.992060887187465
+2 -0.993562797214183
+3 -0.993787614171297
+4 -0.990178759149303
+5 -0.995689946453005
+6 -0.990647875013191
+7 -0.995233214088059
+};
+\addlegendentry{DNN+Opt}
+\addplot [semithick, color1]
+table {%
+0 -1.00201568887051
+1 -1.002546121338
+2 -1.00175869313287
+3 -1.00202622497599
+4 -1.00322661653724
+5 -1.00105589394326
+6 -1.00381697952072
+7 -1.00167762454464
+};
+\addlegendentry{DNN+Opt}
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks]
 table {%
 0 -0.994415518784577
@@ -117,7 +229,7 @@ table {%
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 154759bd89db79f5a8a8481ad8ef51c894d00117
+Commit: 1cf67b36d121b5a0157e364668024bf1c2745c0b
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-19};
 \node at (axis cs:0.2,0.93)[
@@ -125,7 +237,7 @@ Hostname: ada-19};
   anchor=south east,
   text=white!50.19607843137255!black,
   rotate=0.0
-]{@1547};
+]{@1cf6};
 \node at (axis cs:0.95,0.01)[
   scale=0.15,
   anchor=south east,
@@ -133,7 +245,7 @@ Hostname: ada-19};
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 154759bd89db79f5a8a8481ad8ef51c894d00117
+Commit: 1cf67b36d121b5a0157e364668024bf1c2745c0b
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-19};
 \end{axis}
@@ -147,14 +259,14 @@ Hostname: ada-19};
 %% script name: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py
 %% ALWAYS INCLUDE THE COMMENTS WHEN COPYING THIS PLOT
 %% DO NOT REMOVE THE COMMENTS BELOW!
-%% GIT git_commit : 154759bd89db79f5a8a8481ad8ef51c894d00117
+%% GIT git_commit : 1cf67b36d121b5a0157e364668024bf1c2745c0b
 %% GIT git_repo_modified : False
 %% GIT git_branch : master
 %% GIT git_remote_url : git@github.com:kjetil-lye/ismo_validation.git
-%% GIT git_short_commit : 1547
+%% GIT git_short_commit : 1cf6
 %% working_directory : /scratch/userdata/klye/ismo_validation/validation/examples/sine
 %% hostname : ada-19
-%% generated_on_date : 2019-05-27 19:51:47.043778
+%% generated_on_date : 2019-05-27 20:01:36.102806
 %% accessed_environment:
 %% additional_parameters:
 %% python_version: 
