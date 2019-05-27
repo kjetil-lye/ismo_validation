@@ -48,7 +48,7 @@ if __name__ == '__main__':
                 for rerun in range(number_of_reruns):
                     for iteration in range(iterations):
                         all_values = []
-                        for pass_number in [0, 1]:
+                        for pass_number in [0]:
                             output_objective = validation.config.get_competitor_objective_filename(batch_size=batch_size,
                                                                                                    starting_size=starting_size,
                                                                                                    rerun=rerun, iteration=iteration,
