@@ -35,7 +35,7 @@ if __name__ == '__main__':
                                                                                     generator=generator)
 
                         values = np.loadtxt(output_objective)
-
+                        values = values[~np.isnan(values)]
                         min_value = np.min(values)
                         if iteration > 0:
                             min_value = min(min_value, np.min(min_value_per_iteration[:iteration,rerun]))
@@ -56,6 +56,7 @@ if __name__ == '__main__':
                                                                                                    generator=generator)
 
                             values = np.loadtxt(output_objective)
+                            values = values[~np.isnan(values)]
                             all_values.extend(values)
 
 
@@ -68,9 +69,19 @@ if __name__ == '__main__':
                              yerr=np.std(min_value_per_iteration, 1), label='ISMO',
                              fmt='o', uplims=True, lolims=True)
 
+
+
                 plt.errorbar(iteration_range, np.mean(min_value_per_iteration_competitor, 1),
                              yerr=np.std(min_value_per_iteration_competitor, 1), label='DNN+Opt',
                              fmt='*', uplims=True, lolims=True)
+
+                print("#"*80)
+                print(f"starting_size = {starting_size}, batch_size = {batch_size}")
+                print(f"mean(ismo)={np.mean(min_value_per_iteration, 1)}\n"
+                      f" var(ismo)={np.mean(min_value_per_iteration, 1)}\n"
+                      f"\n"
+                      f"mean(dnno)={np.mean(min_value_per_iteration_competitor, 1)}\n"
+                      f" var(dnno)={np.mean(min_value_per_iteration_competitor, 1)}\n")
 
                 plt.xlabel("Iteration $k$")
                 plt.ylabel("$\\mathbb{E}( J(x_k^*))$")

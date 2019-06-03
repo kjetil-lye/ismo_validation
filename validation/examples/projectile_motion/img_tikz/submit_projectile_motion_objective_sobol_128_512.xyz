@@ -15,83 +15,211 @@ starting_size: 512},
 width=\figurewidth,
 x grid style={white!69.01960784313725!black},
 xlabel={Iteration \(\displaystyle k\)},
-xmin=-0.105, xmax=1.105,
+xmin=-0.35, xmax=7.35,
 xtick style={color=black},
 y grid style={white!69.01960784313725!black},
 ylabel={\(\displaystyle \mathbb{E}( J(x_k^*))\)},
-ymin=-0.105, ymax=1.105,
+ymin=-0.00144786877441092, ymax=0.0038174098567882,
 ytick style={color=black}
 ]
+\path [draw=color0, semithick]
+(axis cs:0,0.0010462055340453)
+--(axis cs:0,0.00288841974793271);
+
+\path [draw=color0, semithick]
+(axis cs:1,0.000270473330773282)
+--(axis cs:1,0.000660020084331505);
+
+\path [draw=color0, semithick]
+(axis cs:2,0.000154111832859541)
+--(axis cs:2,0.0004079549372062);
+
+\path [draw=color0, semithick]
+(axis cs:3,0.000111339180463067)
+--(axis cs:3,0.000336895313583401);
+
+\path [draw=color0, semithick]
+(axis cs:4,0.00010798655996923)
+--(axis cs:4,0.000324086276687469);
+
+\path [draw=color0, semithick]
+(axis cs:5,0.000107377244273631)
+--(axis cs:5,0.000323689026797093);
+
+\path [draw=color0, semithick]
+(axis cs:6,9.95966753595789e-05)
+--(axis cs:6,0.000316206522397336);
+
+\path [draw=color0, semithick]
+(axis cs:7,8.11440210465558e-05)
+--(axis cs:7,0.000275809161154362);
+
+\path [draw=color0, semithick]
+(axis cs:0,-0.000796008679842106)
+--(axis cs:0,0.0010462055340453);
+
+\path [draw=color0, semithick]
+(axis cs:1,-0.00011907342278494)
+--(axis cs:1,0.000270473330773282);
+
+\path [draw=color0, semithick]
+(axis cs:2,-9.97312714871174e-05)
+--(axis cs:2,0.000154111832859541);
+
+\path [draw=color0, semithick]
+(axis cs:3,-0.000114216952657268)
+--(axis cs:3,0.000111339180463067);
+
+\path [draw=color0, semithick]
+(axis cs:4,-0.00010811315674901)
+--(axis cs:4,0.00010798655996923);
+
+\path [draw=color0, semithick]
+(axis cs:5,-0.000108934538249831)
+--(axis cs:5,0.000107377244273631);
+
+\path [draw=color0, semithick]
+(axis cs:6,-0.000117013171678179)
+--(axis cs:6,9.95966753595789e-05);
+
+\path [draw=color0, semithick]
+(axis cs:7,-0.000113521119061251)
+--(axis cs:7,8.11440210465558e-05);
+
+\path [draw=color1, semithick]
+(axis cs:0,0.000933998409483206)
+--(axis cs:0,0.00211644205527785);
+
+\path [draw=color1, semithick]
+(axis cs:1,0.00118477054118864)
+--(axis cs:1,0.00357807900991551);
+
+\path [draw=color1, semithick]
+(axis cs:2,0.000603208104941091)
+--(axis cs:2,0.00157604079866724);
+
+\path [draw=color1, semithick]
+(axis cs:3,0.00061534347539861)
+--(axis cs:3,0.00164415040609737);
+
+\path [draw=color1, semithick]
+(axis cs:4,0.000319189221738143)
+--(axis cs:4,0.000739689448063336);
+
+\path [draw=color1, semithick]
+(axis cs:5,0.000237220595853077)
+--(axis cs:5,0.00055917054407179);
+
+\path [draw=color1, semithick]
+(axis cs:6,0.000236095490433347)
+--(axis cs:6,0.000594135294285143);
+
+\path [draw=color1, semithick]
+(axis cs:7,0.000261821538333803)
+--(axis cs:7,0.000828685092369562);
+
+\path [draw=color1, semithick]
+(axis cs:0,-0.000248445236311435)
+--(axis cs:0,0.000933998409483206);
+
+\path [draw=color1, semithick]
+(axis cs:1,-0.00120853792753823)
+--(axis cs:1,0.00118477054118864);
+
+\path [draw=color1, semithick]
+(axis cs:2,-0.000369624588785057)
+--(axis cs:2,0.000603208104941091);
+
+\path [draw=color1, semithick]
+(axis cs:3,-0.000413463455300149)
+--(axis cs:3,0.00061534347539861);
+
+\path [draw=color1, semithick]
+(axis cs:4,-0.00010131100458705)
+--(axis cs:4,0.000319189221738143);
+
+\path [draw=color1, semithick]
+(axis cs:5,-8.47293523656357e-05)
+--(axis cs:5,0.000237220595853077);
+
+\path [draw=color1, semithick]
+(axis cs:6,-0.00012194431341845)
+--(axis cs:6,0.000236095490433347);
+
+\path [draw=color1, semithick]
+(axis cs:7,-0.000305042015701955)
+--(axis cs:7,0.000261821538333803);
+
 \addplot [semithick, color0]
 table {%
-0 nan
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 nan
+0 0.00288841974793271
+1 0.000660020084331505
+2 0.0004079549372062
+3 0.000336895313583401
+4 0.000324086276687469
+5 0.000323689026797093
+6 0.000316206522397336
+7 0.000275809161154362
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color0]
 table {%
-0 nan
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 nan
+0 -0.000796008679842106
+1 -0.00011907342278494
+2 -9.97312714871174e-05
+3 -0.000114216952657268
+4 -0.00010811315674901
+5 -0.000108934538249831
+6 -0.000117013171678179
+7 -0.000113521119061251
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
 table {%
-0 nan
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 nan
+0 0.00211644205527785
+1 0.00357807900991551
+2 0.00157604079866724
+3 0.00164415040609737
+4 0.000739689448063336
+5 0.00055917054407179
+6 0.000594135294285143
+7 0.000828685092369562
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
 table {%
-0 nan
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 nan
+0 -0.000248445236311435
+1 -0.00120853792753823
+2 -0.000369624588785057
+3 -0.000413463455300149
+4 -0.00010131100458705
+5 -8.47293523656357e-05
+6 -0.00012194431341845
+7 -0.000305042015701955
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks]
 table {%
-0 nan
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 nan
+0 0.0010462055340453
+1 0.000270473330773282
+2 0.000154111832859541
+3 0.000111339180463067
+4 0.00010798655996923
+5 0.000107377244273631
+6 9.95966753595789e-05
+7 8.11440210465558e-05
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1, mark=asterisk, mark size=3, mark options={solid}, only marks]
 table {%
-0 nan
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 nan
+0 0.000933998409483206
+1 0.00118477054118864
+2 0.000603208104941091
+3 0.00061534347539861
+4 0.000319189221738143
+5 0.000237220595853077
+6 0.000236095490433347
+7 0.000261821538333803
 };
 \addlegendentry{DNN+Opt}
 \node at (axis cs:0.95,0.01)[
@@ -101,7 +229,7 @@ table {%
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 4387c8df18c86310c27d992d28568270b981cc0c
+Commit: cfe16f311d13b9b06420f1d43e4e91bd1e71acbb
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-18};
 \node at (axis cs:0.2,0.93)[
@@ -109,7 +237,7 @@ Hostname: ada-18};
   anchor=south east,
   text=white!50.19607843137255!black,
   rotate=0.0
-]{@4387};
+]{@cfe1};
 \end{axis}
 
 \end{tikzpicture}
@@ -122,14 +250,14 @@ Hostname: ada-18};
 %% script name: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py
 %% ALWAYS INCLUDE THE COMMENTS WHEN COPYING THIS PLOT
 %% DO NOT REMOVE THE COMMENTS BELOW!
-%% GIT git_commit : 4387c8df18c86310c27d992d28568270b981cc0c
-%% GIT git_repo_modified : False
+%% GIT git_commit : cfe16f311d13b9b06420f1d43e4e91bd1e71acbb
+%% GIT git_repo_modified : True
 %% GIT git_branch : master
 %% GIT git_remote_url : git@github.com:kjetil-lye/ismo_validation.git
-%% GIT git_short_commit : 4387
+%% GIT git_short_commit : cfe1
 %% working_directory : /scratch/userdata/klye/ismo_validation/validation/examples/projectile_motion
 %% hostname : ada-18
-%% generated_on_date : 2019-06-03 08:22:52.865233
+%% generated_on_date : 2019-06-03 16:03:37.594591
 %% accessed_environment:
 %% additional_parameters:
 %% python_version: 
@@ -629,6 +757,6 @@ Hostname: ada-18};
 %%     PIL.PngImagePlugin: 0.9 (/scratch/userdata/klye/ismo_validation/.venv/lib/python3.6/site-packages/PIL/PngImagePlugin.py)
 %% stacktrace:
 %%     [function: savePlot, line: 271, file: /scratch/userdata/klye/ismo_validation/plot_info/plot_info.py]
-%%     [function: <module>, line: 84, file: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py]
+%%     [function: <module>, line: 95, file: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py]
 %%     [function: _run_code, line: 85, file: /usr/lib64/python3.6/runpy.py]
 %%     [function: _run_module_as_main, line: 193, file: /usr/lib64/python3.6/runpy.py]

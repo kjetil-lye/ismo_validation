@@ -7,7 +7,7 @@
 \begin{axis}[
 height=\figureheight,
 legend cell align={left},
-legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black},
+legend style={draw=white!80.0!black},
 tick align=outside,
 tick pos=left,
 width=\figurewidth,
@@ -17,26 +17,72 @@ xmin=-0.35, xmax=7.35,
 xtick style={color=black},
 y grid style={white!69.01960784313725!black},
 ylabel={\(\displaystyle \mathbb{E}( J(x_k^*))\)},
-ymin=-0.0197937501427572, ymax=0.0498993789217112,
-ytick style={color=black},
-ytick={-0.02,-0.01,0,0.01,0.02,0.03,0.04,0.05},
-yticklabels={−0.02,−0.01,0.00,0.01,0.02,0.03,0.04,0.05}
+ymin=-0.00446204243485222, ymax=0.00886343152803678,
+ytick style={color=black}
 ]
 \path [draw=color0, semithick]
 (axis cs:0,0.00220069454659228)
 --(axis cs:0,0.00825772816608728);
 
 \path [draw=color0, semithick]
-(axis cs:7,0.015052814389477)
---(axis cs:7,0.0467315094187808);
+(axis cs:1,0.000309167120504599)
+--(axis cs:1,0.000892743923327958);
+
+\path [draw=color0, semithick]
+(axis cs:2,0.000208016975898583)
+--(axis cs:2,0.000729717066178855);
+
+\path [draw=color0, semithick]
+(axis cs:3,0.000100998513682232)
+--(axis cs:3,0.0002574043170115);
+
+\path [draw=color0, semithick]
+(axis cs:4,6.97642463392707e-05)
+--(axis cs:4,0.000176111691115309);
+
+\path [draw=color0, semithick]
+(axis cs:5,5.68646324111221e-05)
+--(axis cs:5,0.000145195306078194);
+
+\path [draw=color0, semithick]
+(axis cs:6,5.68646324111221e-05)
+--(axis cs:6,0.000145195306078194);
+
+\path [draw=color0, semithick]
+(axis cs:7,5.68094699394858e-05)
+--(axis cs:7,0.000145173338879829);
 
 \path [draw=color0, semithick]
 (axis cs:0,-0.00385633907290272)
 --(axis cs:0,0.00220069454659228);
 
 \path [draw=color0, semithick]
-(axis cs:7,-0.0166258806398268)
---(axis cs:7,0.015052814389477);
+(axis cs:1,-0.000274409682318761)
+--(axis cs:1,0.000309167120504599);
+
+\path [draw=color0, semithick]
+(axis cs:2,-0.000313683114381689)
+--(axis cs:2,0.000208016975898583);
+
+\path [draw=color0, semithick]
+(axis cs:3,-5.54072896470357e-05)
+--(axis cs:3,0.000100998513682232);
+
+\path [draw=color0, semithick]
+(axis cs:4,-3.65831984367676e-05)
+--(axis cs:4,6.97642463392707e-05);
+
+\path [draw=color0, semithick]
+(axis cs:5,-3.14660412559497e-05)
+--(axis cs:5,5.68646324111221e-05);
+
+\path [draw=color0, semithick]
+(axis cs:6,-3.14660412559497e-05)
+--(axis cs:6,5.68646324111221e-05);
+
+\path [draw=color0, semithick]
+(axis cs:7,-3.15543990008571e-05)
+--(axis cs:7,5.68094699394858e-05);
 
 \path [draw=color1, semithick]
 (axis cs:0,0.00151539380046896)
@@ -105,25 +151,25 @@ yticklabels={−0.02,−0.01,0.00,0.01,0.02,0.03,0.04,0.05}
 \addplot [semithick, color0]
 table {%
 0 0.00825772816608728
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 0.0467315094187808
+1 0.000892743923327958
+2 0.000729717066178855
+3 0.0002574043170115
+4 0.000176111691115309
+5 0.000145195306078194
+6 0.000145195306078194
+7 0.000145173338879829
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color0]
 table {%
 0 -0.00385633907290272
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 -0.0166258806398268
+1 -0.000274409682318761
+2 -0.000313683114381689
+3 -5.54072896470357e-05
+4 -3.65831984367676e-05
+5 -3.14660412559497e-05
+6 -3.14660412559497e-05
+7 -3.15543990008571e-05
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
@@ -153,13 +199,13 @@ table {%
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks]
 table {%
 0 0.00220069454659228
-1 nan
-2 nan
-3 nan
-4 nan
-5 nan
-6 nan
-7 0.015052814389477
+1 0.000309167120504599
+2 0.000208016975898583
+3 0.000100998513682232
+4 6.97642463392707e-05
+5 5.68646324111221e-05
+6 5.68646324111221e-05
+7 5.68094699394858e-05
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1, mark=asterisk, mark size=3, mark options={solid}, only marks]
@@ -181,7 +227,7 @@ table {%
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 4387c8df18c86310c27d992d28568270b981cc0c
+Commit: cfe16f311d13b9b06420f1d43e4e91bd1e71acbb
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-18};
 \node at (axis cs:0.2,0.93)[
@@ -189,7 +235,7 @@ Hostname: ada-18};
   anchor=south east,
   text=white!50.19607843137255!black,
   rotate=0.0
-]{@4387};
+]{@cfe1};
 \node at (axis cs:0.95,0.01)[
   scale=0.15,
   anchor=south east,
@@ -197,7 +243,7 @@ Hostname: ada-18};
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 4387c8df18c86310c27d992d28568270b981cc0c
+Commit: cfe16f311d13b9b06420f1d43e4e91bd1e71acbb
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-18};
 \end{axis}
@@ -211,14 +257,14 @@ Hostname: ada-18};
 %% script name: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py
 %% ALWAYS INCLUDE THE COMMENTS WHEN COPYING THIS PLOT
 %% DO NOT REMOVE THE COMMENTS BELOW!
-%% GIT git_commit : 4387c8df18c86310c27d992d28568270b981cc0c
-%% GIT git_repo_modified : False
+%% GIT git_commit : cfe16f311d13b9b06420f1d43e4e91bd1e71acbb
+%% GIT git_repo_modified : True
 %% GIT git_branch : master
 %% GIT git_remote_url : git@github.com:kjetil-lye/ismo_validation.git
-%% GIT git_short_commit : 4387
+%% GIT git_short_commit : cfe1
 %% working_directory : /scratch/userdata/klye/ismo_validation/validation/examples/projectile_motion
 %% hostname : ada-18
-%% generated_on_date : 2019-06-03 08:22:12.360049
+%% generated_on_date : 2019-06-03 16:02:56.256582
 %% accessed_environment:
 %% additional_parameters:
 %% python_version: 
@@ -719,6 +765,6 @@ Hostname: ada-18};
 %% stacktrace:
 %%     [function: savePlot, line: 271, file: /scratch/userdata/klye/ismo_validation/plot_info/plot_info.py]
 %%     [function: savePlot, line: 305, file: /scratch/userdata/klye/ismo_validation/plot_info/plot_info.py]
-%%     [function: <module>, line: 84, file: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py]
+%%     [function: <module>, line: 95, file: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py]
 %%     [function: _run_code, line: 85, file: /usr/lib64/python3.6/runpy.py]
 %%     [function: _run_module_as_main, line: 193, file: /usr/lib64/python3.6/runpy.py]
