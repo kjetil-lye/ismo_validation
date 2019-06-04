@@ -86,8 +86,8 @@ if __name__ == '__main__':
                 plt.xlabel("Iteration $k$")
                 plt.ylabel("$\\mathbb{E}( J(x_k^*))$")
                 plt.legend()
-                plt.title("script: {}, batch_size: {},\nstarting_size: {}".format(
-                    python_script, batch_size, starting_size))
+                plt.title("script: {}, generator: {}, batch_size: {},\nstarting_size: {}".format(
+                    python_script, generator, batch_size, starting_size))
                 plot_info.savePlot("{script}_objective_{generator}_{batch_size}_{starting_size}".format(
                     script=python_script.replace(".py", ""),
                     batch_size=batch_size,

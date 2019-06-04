@@ -10,16 +10,16 @@ legend cell align={left},
 legend style={draw=white!80.0!black},
 tick align=outside,
 tick pos=left,
-title={script: submit_projectile_motion.py, batch_size: 128,
+title={script: submit_projectile_motion.py, generator: sobol, batch_size: 128,
 starting_size: 1024},
 width=\figurewidth,
 x grid style={white!69.01960784313725!black},
 xlabel={Iteration \(\displaystyle k\)},
-xmin=-0.35, xmax=7.35,
+xmin=-0.4, xmax=8.4,
 xtick style={color=black},
 y grid style={white!69.01960784313725!black},
 ylabel={\(\displaystyle \mathbb{E}( J(x_k^*))\)},
-ymin=-0.00036203146216214, ymax=0.000891736359961928,
+ymin=-0.000283559841868371, ymax=0.000887999616138415,
 ytick style={color=black}
 ]
 \path [draw=color0, semithick]
@@ -87,68 +87,68 @@ ytick style={color=black}
 --(axis cs:7,5.48955711510669e-05);
 
 \path [draw=color1, semithick]
-(axis cs:0,0.000319189221738143)
---(axis cs:0,0.000739689448063336);
+(axis cs:1,0.000218813688039691)
+--(axis cs:1,0.000578070157988888);
 
 \path [draw=color1, semithick]
-(axis cs:1,0.000237220595853077)
---(axis cs:1,0.00055917054407179);
+(axis cs:2,9.38571954966444e-05)
+--(axis cs:2,0.000256457841775389);
 
 \path [draw=color1, semithick]
-(axis cs:2,0.000236095490433347)
---(axis cs:2,0.000594135294285143);
+(axis cs:3,0.0001118407718006)
+--(axis cs:3,0.000316369442707585);
 
 \path [draw=color1, semithick]
-(axis cs:3,0.000261821538333803)
---(axis cs:3,0.000828685092369562);
+(axis cs:4,8.54266216360351e-05)
+--(axis cs:4,0.000235821196576038);
 
 \path [draw=color1, semithick]
-(axis cs:4,0.000168584978600795)
---(axis cs:4,0.000456152449926718);
+(axis cs:5,7.22000118399321e-05)
+--(axis cs:5,0.000194421229581081);
 
 \path [draw=color1, semithick]
-(axis cs:5,0.000143116374008585)
---(axis cs:5,0.000406580954681906);
+(axis cs:6,0.00010600187936491)
+--(axis cs:6,0.000279299628489982);
 
 \path [draw=color1, semithick]
-(axis cs:6,0.000112084714956307)
---(axis cs:6,0.000323728860495367);
+(axis cs:7,4.59052235183289e-05)
+--(axis cs:7,0.000127433901863623);
 
 \path [draw=color1, semithick]
-(axis cs:7,0.000158605756825436)
---(axis cs:7,0.000473161071132433);
+(axis cs:8,5.41474164261626e-05)
+--(axis cs:8,0.000153156059449148);
 
 \path [draw=color1, semithick]
-(axis cs:0,-0.00010131100458705)
---(axis cs:0,0.000319189221738143);
+(axis cs:1,-0.000140442781909506)
+--(axis cs:1,0.000218813688039691);
 
 \path [draw=color1, semithick]
-(axis cs:1,-8.47293523656357e-05)
---(axis cs:1,0.000237220595853077);
+(axis cs:2,-6.87434507821001e-05)
+--(axis cs:2,9.38571954966444e-05);
 
 \path [draw=color1, semithick]
-(axis cs:2,-0.00012194431341845)
---(axis cs:2,0.000236095490433347);
+(axis cs:3,-9.2687899106385e-05)
+--(axis cs:3,0.0001118407718006);
 
 \path [draw=color1, semithick]
-(axis cs:3,-0.000305042015701955)
---(axis cs:3,0.000261821538333803);
+(axis cs:4,-6.49679533039675e-05)
+--(axis cs:4,8.54266216360351e-05);
 
 \path [draw=color1, semithick]
-(axis cs:4,-0.000118982492725129)
---(axis cs:4,0.000168584978600795);
+(axis cs:5,-5.00212059012166e-05)
+--(axis cs:5,7.22000118399321e-05);
 
 \path [draw=color1, semithick]
-(axis cs:5,-0.000120348206664736)
---(axis cs:5,0.000143116374008585);
+(axis cs:6,-6.72958697601628e-05)
+--(axis cs:6,0.00010600187936491);
 
 \path [draw=color1, semithick]
-(axis cs:6,-9.95594305827534e-05)
---(axis cs:6,0.000112084714956307);
+(axis cs:7,-3.56234548269652e-05)
+--(axis cs:7,4.59052235183289e-05);
 
 \path [draw=color1, semithick]
-(axis cs:7,-0.000155949557481561)
---(axis cs:7,0.000158605756825436);
+(axis cs:8,-4.48612265968223e-05)
+--(axis cs:8,5.41474164261626e-05);
 
 \addplot [semithick, color0]
 table {%
@@ -176,26 +176,26 @@ table {%
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
 table {%
-0 0.000739689448063336
-1 0.00055917054407179
-2 0.000594135294285143
-3 0.000828685092369562
-4 0.000456152449926718
-5 0.000406580954681906
-6 0.000323728860495367
-7 0.000473161071132433
+1 0.000578070157988888
+2 0.000256457841775389
+3 0.000316369442707585
+4 0.000235821196576038
+5 0.000194421229581081
+6 0.000279299628489982
+7 0.000127433901863623
+8 0.000153156059449148
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
 table {%
-0 -0.00010131100458705
-1 -8.47293523656357e-05
-2 -0.00012194431341845
-3 -0.000305042015701955
-4 -0.000118982492725129
-5 -0.000120348206664736
-6 -9.95594305827534e-05
-7 -0.000155949557481561
+1 -0.000140442781909506
+2 -6.87434507821001e-05
+3 -9.2687899106385e-05
+4 -6.49679533039675e-05
+5 -5.00212059012166e-05
+6 -6.72958697601628e-05
+7 -3.56234548269652e-05
+8 -4.48612265968223e-05
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks]
@@ -212,14 +212,14 @@ table {%
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1, mark=asterisk, mark size=3, mark options={solid}, only marks]
 table {%
-0 0.000319189221738143
-1 0.000237220595853077
-2 0.000236095490433347
-3 0.000261821538333803
-4 0.000168584978600795
-5 0.000143116374008585
-6 0.000112084714956307
-7 0.000158605756825436
+1 0.000218813688039691
+2 9.38571954966444e-05
+3 0.0001118407718006
+4 8.54266216360351e-05
+5 7.22000118399321e-05
+6 0.00010600187936491
+7 4.59052235183289e-05
+8 5.41474164261626e-05
 };
 \addlegendentry{DNN+Opt}
 \node at (axis cs:0.95,0.01)[
@@ -229,7 +229,7 @@ table {%
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 36b561a26ae6d86f84e9c3d8059d1c5b9e9004b8
+Commit: 7b2c268dd0f15d468d5cd2ae846b63db43cd1f55
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-18};
 \node at (axis cs:0.2,0.93)[
@@ -237,27 +237,27 @@ Hostname: ada-18};
   anchor=south east,
   text=white!50.19607843137255!black,
   rotate=0.0
-]{@36b5};
+]{@7b2c};
 \end{axis}
 
 \end{tikzpicture}
 
 %% INCLUDE THE COMMENTS AT THE END WHEN COPYING
 %%%%%%%%%%%%%TITLE%%%%%%%%%%%%%%%%%
-%% script: submit_projectile_motion.py, batch_size: 128,
+%% script: submit_projectile_motion.py, generator: sobol, batch_size: 128,
 %% starting_size: 1024
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% script name: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py
 %% ALWAYS INCLUDE THE COMMENTS WHEN COPYING THIS PLOT
 %% DO NOT REMOVE THE COMMENTS BELOW!
-%% GIT git_commit : 36b561a26ae6d86f84e9c3d8059d1c5b9e9004b8
+%% GIT git_commit : 7b2c268dd0f15d468d5cd2ae846b63db43cd1f55
 %% GIT git_repo_modified : False
 %% GIT git_branch : master
 %% GIT git_remote_url : git@github.com:kjetil-lye/ismo_validation.git
-%% GIT git_short_commit : 36b5
+%% GIT git_short_commit : 7b2c
 %% working_directory : /scratch/userdata/klye/ismo_validation/validation/examples/projectile_motion
 %% hostname : ada-18
-%% generated_on_date : 2019-06-03 16:11:38.149226
+%% generated_on_date : 2019-06-04 15:39:47.791420
 %% accessed_environment:
 %% additional_parameters:
 %% python_version: 

@@ -10,12 +10,12 @@ legend cell align={left},
 legend style={draw=white!80.0!black},
 tick align=outside,
 tick pos=left,
-title={script: submit_projectile_motion.py, batch_size: 4,
+title={script: submit_projectile_motion.py, generator: monte-carlo, batch_size: 4,
 starting_size: 4},
 width=\figurewidth,
 x grid style={white!69.01960784313725!black},
 xlabel={Iteration \(\displaystyle k\)},
-xmin=-0.35, xmax=7.35,
+xmin=-0.4, xmax=8.4,
 xtick style={color=black},
 y grid style={white!69.01960784313725!black},
 ylabel={\(\displaystyle \mathbb{E}( J(x_k^*))\)},
@@ -87,68 +87,68 @@ ytick style={color=black}
 --(axis cs:7,0.109256979787732);
 
 \path [draw=color1, semithick]
-(axis cs:0,10.1756879507444)
---(axis cs:0,27.0940285639255);
+(axis cs:1,2.66135388591354)
+--(axis cs:1,7.5347452701641);
 
 \path [draw=color1, semithick]
-(axis cs:1,4.34415871889118)
---(axis cs:1,11.3319270850178);
+(axis cs:2,2.45294079666868)
+--(axis cs:2,7.56678728266426);
 
 \path [draw=color1, semithick]
-(axis cs:2,2.16572674460097)
---(axis cs:2,5.95296687764506);
+(axis cs:3,1.55077274490609)
+--(axis cs:3,5.01218312814249);
 
 \path [draw=color1, semithick]
-(axis cs:3,1.83581223946305)
---(axis cs:3,5.02334708743679);
+(axis cs:4,0.848966589305338)
+--(axis cs:4,2.41576606086818);
 
 \path [draw=color1, semithick]
-(axis cs:4,0.853043025982408)
---(axis cs:4,2.50884330313679);
+(axis cs:5,0.507336114096229)
+--(axis cs:5,1.74085291301389);
 
 \path [draw=color1, semithick]
-(axis cs:5,0.725688111445562)
---(axis cs:5,2.20547875278217);
+(axis cs:6,0.382614250702802)
+--(axis cs:6,1.27640607069538);
 
 \path [draw=color1, semithick]
-(axis cs:6,0.453463959177572)
---(axis cs:6,1.26837160736443);
+(axis cs:7,0.291575650278314)
+--(axis cs:7,1.01495761390376);
 
 \path [draw=color1, semithick]
-(axis cs:7,0.395692787546079)
---(axis cs:7,1.14999026199889);
+(axis cs:8,0.1885872998436)
+--(axis cs:8,0.565011282163031);
 
 \path [draw=color1, semithick]
-(axis cs:0,-6.7426526624367)
---(axis cs:0,10.1756879507444);
+(axis cs:1,-2.21203749833702)
+--(axis cs:1,2.66135388591354);
 
 \path [draw=color1, semithick]
-(axis cs:1,-2.64360964723544)
---(axis cs:1,4.34415871889118);
+(axis cs:2,-2.66090568932691)
+--(axis cs:2,2.45294079666868);
 
 \path [draw=color1, semithick]
-(axis cs:2,-1.62151338844311)
---(axis cs:2,2.16572674460097);
+(axis cs:3,-1.9106376383303)
+--(axis cs:3,1.55077274490609);
 
 \path [draw=color1, semithick]
-(axis cs:3,-1.35172260851069)
---(axis cs:3,1.83581223946305);
+(axis cs:4,-0.717832882257509)
+--(axis cs:4,0.848966589305338);
 
 \path [draw=color1, semithick]
-(axis cs:4,-0.802757251171977)
---(axis cs:4,0.853043025982408);
+(axis cs:5,-0.726180684821435)
+--(axis cs:5,0.507336114096229);
 
 \path [draw=color1, semithick]
-(axis cs:5,-0.754102529891049)
---(axis cs:5,0.725688111445562);
+(axis cs:6,-0.511177569289781)
+--(axis cs:6,0.382614250702802);
 
 \path [draw=color1, semithick]
-(axis cs:6,-0.361443689009282)
---(axis cs:6,0.453463959177572);
+(axis cs:7,-0.431806313347132)
+--(axis cs:7,0.291575650278314);
 
 \path [draw=color1, semithick]
-(axis cs:7,-0.358604686906735)
---(axis cs:7,0.395692787546079);
+(axis cs:8,-0.187836682475831)
+--(axis cs:8,0.1885872998436);
 
 \addplot [semithick, color0]
 table {%
@@ -176,26 +176,26 @@ table {%
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
 table {%
-0 27.0940285639255
-1 11.3319270850178
-2 5.95296687764506
-3 5.02334708743679
-4 2.50884330313679
-5 2.20547875278217
-6 1.26837160736443
-7 1.14999026199889
+1 7.5347452701641
+2 7.56678728266426
+3 5.01218312814249
+4 2.41576606086818
+5 1.74085291301389
+6 1.27640607069538
+7 1.01495761390376
+8 0.565011282163031
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
 table {%
-0 -6.7426526624367
-1 -2.64360964723544
-2 -1.62151338844311
-3 -1.35172260851069
-4 -0.802757251171977
-5 -0.754102529891049
-6 -0.361443689009282
-7 -0.358604686906735
+1 -2.21203749833702
+2 -2.66090568932691
+3 -1.9106376383303
+4 -0.717832882257509
+5 -0.726180684821435
+6 -0.511177569289781
+7 -0.431806313347132
+8 -0.187836682475831
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks]
@@ -212,14 +212,14 @@ table {%
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1, mark=asterisk, mark size=3, mark options={solid}, only marks]
 table {%
-0 10.1756879507444
-1 4.34415871889118
-2 2.16572674460097
-3 1.83581223946305
-4 0.853043025982408
-5 0.725688111445562
-6 0.453463959177572
-7 0.395692787546079
+1 2.66135388591354
+2 2.45294079666868
+3 1.55077274490609
+4 0.848966589305338
+5 0.507336114096229
+6 0.382614250702802
+7 0.291575650278314
+8 0.1885872998436
 };
 \addlegendentry{DNN+Opt}
 \node at (axis cs:0.95,0.01)[
@@ -229,7 +229,7 @@ table {%
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 36b561a26ae6d86f84e9c3d8059d1c5b9e9004b8
+Commit: 7b2c268dd0f15d468d5cd2ae846b63db43cd1f55
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-18};
 \node at (axis cs:0.2,0.93)[
@@ -237,27 +237,27 @@ Hostname: ada-18};
   anchor=south east,
   text=white!50.19607843137255!black,
   rotate=0.0
-]{@36b5};
+]{@7b2c};
 \end{axis}
 
 \end{tikzpicture}
 
 %% INCLUDE THE COMMENTS AT THE END WHEN COPYING
 %%%%%%%%%%%%%TITLE%%%%%%%%%%%%%%%%%
-%% script: submit_projectile_motion.py, batch_size: 4,
+%% script: submit_projectile_motion.py, generator: monte-carlo, batch_size: 4,
 %% starting_size: 4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% script name: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py
 %% ALWAYS INCLUDE THE COMMENTS WHEN COPYING THIS PLOT
 %% DO NOT REMOVE THE COMMENTS BELOW!
-%% GIT git_commit : 36b561a26ae6d86f84e9c3d8059d1c5b9e9004b8
+%% GIT git_commit : 7b2c268dd0f15d468d5cd2ae846b63db43cd1f55
 %% GIT git_repo_modified : False
 %% GIT git_branch : master
 %% GIT git_remote_url : git@github.com:kjetil-lye/ismo_validation.git
-%% GIT git_short_commit : 36b5
+%% GIT git_short_commit : 7b2c
 %% working_directory : /scratch/userdata/klye/ismo_validation/validation/examples/projectile_motion
 %% hostname : ada-18
-%% generated_on_date : 2019-06-03 16:10:15.680448
+%% generated_on_date : 2019-06-04 15:38:10.814419
 %% accessed_environment:
 %% additional_parameters:
 %% python_version: 
