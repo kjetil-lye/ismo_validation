@@ -28,7 +28,7 @@ if __name__ == '__main__':
                 min_value_per_iteration = np.zeros((iterations, number_of_reruns))
                 for rerun in range(number_of_reruns):
 
-                    for iteration in range(iterations+1):
+                    for iteration in range(iterations):
                         output_objective = validation.config.get_objective_filename(batch_size=batch_size,
                                                                                     starting_size=starting_size,
                                                                                     rerun=rerun, iteration=iteration,
@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
 
 
-                plt.errorbar(iteration_range, np.mean(min_value_per_iteration_competitor, 1),
+                plt.errorbar(iteration_range+1, np.mean(min_value_per_iteration_competitor, 1),
                              yerr=np.std(min_value_per_iteration_competitor, 1), label='DNN+Opt',
                              fmt='*', uplims=True, lolims=True)
 
