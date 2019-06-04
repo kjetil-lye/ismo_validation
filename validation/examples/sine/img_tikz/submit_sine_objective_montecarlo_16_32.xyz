@@ -15,7 +15,7 @@ starting_size: 32},
 width=\figurewidth,
 x grid style={white!69.01960784313725!black},
 xlabel={Iteration \(\displaystyle k\)},
-xmin=-0.35, xmax=7.35,
+xmin=-0.4, xmax=8.4,
 xtick style={color=black},
 y grid style={white!69.01960784313725!black},
 ylabel={\(\displaystyle \mathbb{E}( J(x_k^*))\)},
@@ -87,68 +87,68 @@ ytick style={color=black}
 --(axis cs:7,-0.999833686900872);
 
 \path [draw=color1, semithick]
-(axis cs:0,-0.994580240169426)
---(axis cs:0,-0.986647328300942);
+(axis cs:1,-0.997053708093592)
+--(axis cs:1,-0.99098221483909);
 
 \path [draw=color1, semithick]
-(axis cs:1,-0.995861058798439)
---(axis cs:1,-0.989206948705807);
+(axis cs:2,-0.997791340330682)
+--(axis cs:2,-0.994635167784308);
 
 \path [draw=color1, semithick]
-(axis cs:2,-0.996984442944785)
---(axis cs:2,-0.990821486013273);
+(axis cs:3,-0.99863279220324)
+--(axis cs:3,-0.995923210363809);
 
 \path [draw=color1, semithick]
-(axis cs:3,-0.998499342198815)
---(axis cs:3,-0.996059581087049);
+(axis cs:4,-0.999402814637211)
+--(axis cs:4,-0.997950143240355);
 
 \path [draw=color1, semithick]
-(axis cs:4,-0.998837552601086)
---(axis cs:4,-0.997096678899112);
+(axis cs:5,-0.999378094620384)
+--(axis cs:5,-0.998556547376716);
 
 \path [draw=color1, semithick]
-(axis cs:5,-0.998985237806554)
---(axis cs:5,-0.997435303279274);
+(axis cs:6,-0.999189315784088)
+--(axis cs:6,-0.997692306642768);
 
 \path [draw=color1, semithick]
-(axis cs:6,-0.999212675599411)
---(axis cs:6,-0.997724456950353);
+(axis cs:7,-0.999471781651536)
+--(axis cs:7,-0.998292761964557);
 
 \path [draw=color1, semithick]
-(axis cs:7,-0.999270283870086)
---(axis cs:7,-0.997783346211393);
+(axis cs:8,-0.999536608666184)
+--(axis cs:8,-0.998341274784009);
 
 \path [draw=color1, semithick]
-(axis cs:0,-1.00251315203791)
---(axis cs:0,-0.994580240169426);
+(axis cs:1,-1.00312520134809)
+--(axis cs:1,-0.997053708093592);
 
 \path [draw=color1, semithick]
-(axis cs:1,-1.00251516889107)
---(axis cs:1,-0.995861058798439);
+(axis cs:2,-1.00094751287706)
+--(axis cs:2,-0.997791340330682);
 
 \path [draw=color1, semithick]
-(axis cs:2,-1.0031473998763)
---(axis cs:2,-0.996984442944785);
+(axis cs:3,-1.00134237404267)
+--(axis cs:3,-0.99863279220324);
 
 \path [draw=color1, semithick]
-(axis cs:3,-1.00093910331058)
---(axis cs:3,-0.998499342198815);
+(axis cs:4,-1.00085548603407)
+--(axis cs:4,-0.999402814637211);
 
 \path [draw=color1, semithick]
-(axis cs:4,-1.00057842630306)
---(axis cs:4,-0.998837552601086);
+(axis cs:5,-1.00019964186405)
+--(axis cs:5,-0.999378094620384);
 
 \path [draw=color1, semithick]
-(axis cs:5,-1.00053517233383)
---(axis cs:5,-0.998985237806554);
+(axis cs:6,-1.00068632492541)
+--(axis cs:6,-0.999189315784088);
 
 \path [draw=color1, semithick]
-(axis cs:6,-1.00070089424847)
---(axis cs:6,-0.999212675599411);
+(axis cs:7,-1.00065080133851)
+--(axis cs:7,-0.999471781651536);
 
 \path [draw=color1, semithick]
-(axis cs:7,-1.00075722152878)
---(axis cs:7,-0.999270283870086);
+(axis cs:8,-1.00073194254836)
+--(axis cs:8,-0.999536608666184);
 
 \addplot [semithick, color0]
 table {%
@@ -176,26 +176,26 @@ table {%
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
 table {%
-0 -0.986647328300942
-1 -0.989206948705807
-2 -0.990821486013273
-3 -0.996059581087049
-4 -0.997096678899112
-5 -0.997435303279274
-6 -0.997724456950353
-7 -0.997783346211393
+1 -0.99098221483909
+2 -0.994635167784308
+3 -0.995923210363809
+4 -0.997950143240355
+5 -0.998556547376716
+6 -0.997692306642768
+7 -0.998292761964557
+8 -0.998341274784009
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1]
 table {%
-0 -1.00251315203791
-1 -1.00251516889107
-2 -1.0031473998763
-3 -1.00093910331058
-4 -1.00057842630306
-5 -1.00053517233383
-6 -1.00070089424847
-7 -1.00075722152878
+1 -1.00312520134809
+2 -1.00094751287706
+3 -1.00134237404267
+4 -1.00085548603407
+5 -1.00019964186405
+6 -1.00068632492541
+7 -1.00065080133851
+8 -1.00073194254836
 };
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks]
@@ -212,14 +212,14 @@ table {%
 \addlegendentry{DNN+Opt}
 \addplot [semithick, color1, mark=asterisk, mark size=3, mark options={solid}, only marks]
 table {%
-0 -0.994580240169426
-1 -0.995861058798439
-2 -0.996984442944785
-3 -0.998499342198815
-4 -0.998837552601086
-5 -0.998985237806554
-6 -0.999212675599411
-7 -0.999270283870086
+1 -0.997053708093592
+2 -0.997791340330682
+3 -0.99863279220324
+4 -0.999402814637211
+5 -0.999378094620384
+6 -0.999189315784088
+7 -0.999471781651536
+8 -0.999536608666184
 };
 \addlegendentry{DNN+Opt}
 \node at (axis cs:0.95,0.01)[
@@ -229,7 +229,7 @@ table {%
   rotate=0.0,
   align=right
 ]{By Kjetil Olsen Lye @ ETHZ <kjetil.o.lye@gmail.com>
-Commit: 1b4525807cf7b16caae965f01bbfa845dc7d8442
+Commit: 77321a62dd6e3a52ef9bd9d14f5950d2546e9cfa
 Repo: git@github.com:kjetil-lye/ismo_validation.git
 Hostname: ada-19};
 \node at (axis cs:0.2,0.93)[
@@ -237,7 +237,7 @@ Hostname: ada-19};
   anchor=south east,
   text=white!50.19607843137255!black,
   rotate=0.0
-]{@1b45};
+]{@7732};
 \end{axis}
 
 \end{tikzpicture}
@@ -250,14 +250,14 @@ Hostname: ada-19};
 %% script name: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py
 %% ALWAYS INCLUDE THE COMMENTS WHEN COPYING THIS PLOT
 %% DO NOT REMOVE THE COMMENTS BELOW!
-%% GIT git_commit : 1b4525807cf7b16caae965f01bbfa845dc7d8442
-%% GIT git_repo_modified : True
+%% GIT git_commit : 77321a62dd6e3a52ef9bd9d14f5950d2546e9cfa
+%% GIT git_repo_modified : False
 %% GIT git_branch : master
 %% GIT git_remote_url : git@github.com:kjetil-lye/ismo_validation.git
-%% GIT git_short_commit : 1b45
+%% GIT git_short_commit : 7732
 %% working_directory : /scratch/userdata/klye/ismo_validation/validation/examples/sine
 %% hostname : ada-19
-%% generated_on_date : 2019-05-27 20:16:18.547049
+%% generated_on_date : 2019-06-04 15:37:15.038496
 %% accessed_environment:
 %% additional_parameters:
 %% python_version: 
@@ -757,6 +757,6 @@ Hostname: ada-19};
 %%     PIL.PngImagePlugin: 0.9 (/scratch/userdata/klye/ismo_validation/.venv/lib/python3.6/site-packages/PIL/PngImagePlugin.py)
 %% stacktrace:
 %%     [function: savePlot, line: 271, file: /scratch/userdata/klye/ismo_validation/plot_info/plot_info.py]
-%%     [function: <module>, line: 84, file: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py]
+%%     [function: <module>, line: 95, file: /scratch/userdata/klye/ismo_validation/validation/bin/plot_iterations.py]
 %%     [function: _run_code, line: 85, file: /usr/lib64/python3.6/runpy.py]
 %%     [function: _run_module_as_main, line: 193, file: /usr/lib64/python3.6/runpy.py]
