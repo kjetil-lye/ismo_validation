@@ -25,7 +25,7 @@ def get_configuration_name(basename, iteration_sizes):
 
 
 
-def run_configuration(*, basename, reruns, number_of_processes, iteration_sizes, repository_path, dry_run,  experiment):
+def run_configuration(*, basename, reruns,  iteration_sizes, repository_path, dry_run,  experiment):
     iteration_sizes_as_str = [str(x) for x in iteration_sizes]
     working_dir = os.path.dirname(experiment)
     experiment_base = os.path.basename(experiment)
