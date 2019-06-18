@@ -8,20 +8,13 @@ import ismo.samples.sample_generator_factory
 import ismo.optimizers
 import matplotlib.pyplot as plt
 import plot_info
-
-class Objective:
-    def __call__(self, x):
-        return x
-
-    def grad(self, x):
-        return np.ones_like(x)
-
-
+from objective import Objective
+from ball import simulate
 if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description="""
-Runs the function sin(4*pi*x) on the input parameters
+Runs the projectile motion
         """)
 
     parser.add_argument('--number_of_samples_per_iteration', type=int, nargs='+', default=[16, 4, 4, 4, 4, 4],
@@ -42,7 +35,7 @@ Runs the function sin(4*pi*x) on the input parameters
     parser.add_argument('--save_result', action='store_true',
                         help='Save the result to file')
 
-    parser.add_argument('--prefix', type=str, default="experiment_",
+    parser.add_argument('--prefix', type=str, default="projectile_motion_experiment_",
                         help="Prefix to all filenames")
 
     parser.add_argument('--with_competitor', action='store_true',
@@ -62,16 +55,16 @@ Runs the function sin(4*pi*x) on the input parameters
         optimizer = ismo.optimizers.create_optimizer(args.optimizer)
 
         trainer = ismo.train.MultiVariateTrainer(
-            [ismo.train.create_trainer_from_simple_file(args.simple_configuration_file)])
+            [ismo.train.create_trainer_from_simple_file(args.simple_configuration_file) for _ in range(1)])
 
         parameters, values = ismo.iterative_surrogate_model_optimization(
             number_of_samples_per_iteration=args.number_of_samples_per_iteration,
             sample_generator=generator,
             trainer=trainer,
             optimizer=optimizer,
-            simulator=lambda x: np.sin(4 * np.pi * x),
+            simulator=simulate,
             objective_function=Objective(),
-            dimension=1,
+            dimension=2,
             starting_sample=try_number*sum(args.number_of_samples_per_iteration))
 
         per_iteration = []
@@ -98,16 +91,16 @@ Runs the function sin(4*pi*x) on the input parameters
                 optimizer = ismo.optimizers.create_optimizer(args.optimizer)
         
                 trainer = ismo.train.MultiVariateTrainer(
-                    [ismo.train.create_trainer_from_simple_file(args.simple_configuration_file)])
+                    [ismo.train.create_trainer_from_simple_file(args.simple_configuration_file) for _ in range(1)])
         
                 parameters, values = ismo.iterative_surrogate_model_optimization(
                     number_of_samples_per_iteration=[number_of_samples, number_of_samples_post],
                     sample_generator=generator,
                     trainer=trainer,
                     optimizer=optimizer,
-                    simulator=lambda x: np.sin(4 * np.pi * x),
+                    simulator=simulate,
                     objective_function=Objective(),
-                    dimension=1,
+                    dimension=2,
                     starting_sample=try_number*(number_of_samples_post+number_of_samples))
         
                 competitor_min_values[try_number, iteration_number] = np.min(values)
