@@ -53,7 +53,7 @@ def run_configuration(*, basename, reruns,  iteration_sizes, repository_path, dr
     if dry_run:
         command_to_run = ['echo', *command_to_run]
 
-    subprocess.run(command_to_run, check=True)
+    subprocess.run(command_to_run, check=True, cwd=working_dir)
 
 if __name__ == '__main__':
     import argparse
