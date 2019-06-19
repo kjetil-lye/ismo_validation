@@ -25,7 +25,13 @@ def get_configuration_name(basename, iteration_sizes):
 
 
 
-def run_configuration(*, basename, reruns,  iteration_sizes, repository_path, dry_run,  experiment):
+def run_configuration(*, basename, 
+                      reruns,  
+                      iteration_sizes, 
+                      repository_path,
+                      dry_run, 
+                      experiment,
+                      memory):
     iteration_sizes_as_str = [str(x) for x in iteration_sizes]
     working_dir = os.path.dirname(experiment)
     experiment_base = os.path.basename(experiment)
@@ -43,6 +49,8 @@ def run_configuration(*, basename, reruns,  iteration_sizes, repository_path, dr
     command_to_submit = " ".join(command_to_submit_list)
     command_to_run = [
         "bsub",
+        '-R',
+        f'rusage[mem={memory}]',
         "-W",
         "120:00",
         "-n",
@@ -93,6 +101,11 @@ Runs the ensemble for M different runs (to get some statistics)./
 
     parser.add_argument('--experiment', type=str,
                         help='Path to python experiment file')
+    
+    parser.add_argument('--memory', type=int, default=8000,
+                        help="Memory per process (in MB)")
+    
+    
 
 
     args = parser.parse_args()
@@ -110,7 +123,8 @@ Runs the ensemble for M different runs (to get some statistics)./
                               iteration_sizes=iteration_sizes,
                               repository_path=args.repository_path,
                               dry_run=args.dry_run,
-                              experiment=args.experiment)
+                              experiment=args.experiment,
+                              memory=args.memory)
 
 
 
