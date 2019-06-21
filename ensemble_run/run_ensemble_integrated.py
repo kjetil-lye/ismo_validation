@@ -5,6 +5,8 @@ import copy
 import sys
 import subprocess
 import glob
+import ismo.submit
+
 
 def all_successfully_completed():
     lsf_files = glob.glob('lsf.o*')
@@ -31,7 +33,8 @@ def run_configuration(*, basename,
                       repository_path,
                       dry_run, 
                       experiment,
-                      memory):
+                      memory,
+                      submitter):
     iteration_sizes_as_str = [str(x) for x in iteration_sizes]
     working_dir = os.path.dirname(experiment)
     experiment_base = os.path.basename(experiment)
@@ -44,24 +47,15 @@ def run_configuration(*, basename,
         str(reruns)
     ]
 
+    command = ismo.submit.Command(command_to_submit_list)
+    old_dir = os.getcwd()
+    os.chdir(working_dir)
+    submitter(command,
+              number_of_processes=1,
+              wait_time_in_hours=120,
+              memory_limit_in_mb=memory)
 
-        
-    command_to_submit = " ".join(command_to_submit_list)
-    command_to_run = [
-        "bsub",
-        '-R',
-        f'rusage[mem={memory}]',
-        "-W",
-        "120:00",
-        "-n",
-        str(1),
-        command_to_submit
-    ]
-
-    if dry_run:
-        command_to_run = ['echo', *command_to_run]
-
-    subprocess.run(command_to_run, check=True, cwd=working_dir)
+    os.chdir(old_dir)
 
 if __name__ == '__main__':
     import argparse
@@ -102,13 +96,18 @@ Runs the ensemble for M different runs (to get some statistics)./
     parser.add_argument('--experiment', type=str,
                         help='Path to python experiment file')
     
-    parser.add_argument('--memory', type=int, default=8000,
+    parser.add_argument('--memory', type=int, default=4000,
                         help="Memory per process (in MB)")
+
+    parser.add_argument('--submitter', type=str, default='bash',
+                        help="Submitter (either bash or lsf)")
     
     
 
 
     args = parser.parse_args()
+
+    submitter = ismo.submit.create_submitter(args.submitter, None, dry_run=args.dry_run)
 
 
     for starting_size in args.starting_sizes:
@@ -124,7 +123,8 @@ Runs the ensemble for M different runs (to get some statistics)./
                               repository_path=args.repository_path,
                               dry_run=args.dry_run,
                               experiment=args.experiment,
-                              memory=args.memory)
+                              memory=args.memory,
+                              submitter=submitter)
 
 
 
