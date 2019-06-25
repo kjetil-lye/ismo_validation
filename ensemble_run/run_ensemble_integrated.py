@@ -34,7 +34,8 @@ def run_configuration(*, basename,
                       dry_run, 
                       experiment,
                       memory,
-                      submitter):
+                      submitter,
+                      generator):
     iteration_sizes_as_str = [str(x) for x in iteration_sizes]
     working_dir = os.path.dirname(experiment)
     experiment_base = os.path.basename(experiment)
@@ -44,7 +45,9 @@ def run_configuration(*, basename,
         '--number_of_samples_per_iteration',
         *iteration_sizes_as_str,
         '--retries',
-        str(reruns)
+        str(reruns),
+        '--generator',
+        generator
     ]
 
     command = ismo.submit.Command(command_to_submit_list)
@@ -101,6 +104,9 @@ Runs the ensemble for M different runs (to get some statistics)./
 
     parser.add_argument('--submitter', type=str, default='bash',
                         help="Submitter (either bash or lsf)")
+
+    parser.add_argument('--generator', type=str, default='monte-carlo',
+                        help="Generator (either 'monte-carlo' or 'sobol')")
     
     
 
@@ -124,7 +130,8 @@ Runs the ensemble for M different runs (to get some statistics)./
                               dry_run=args.dry_run,
                               experiment=args.experiment,
                               memory=args.memory,
-                              submitter=submitter)
+                              submitter=submitter,
+                              generator=args.generator)
 
 
 
