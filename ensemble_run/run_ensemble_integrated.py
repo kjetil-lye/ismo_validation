@@ -47,7 +47,9 @@ def run_configuration(*, basename,
         '--retries',
         str(reruns),
         '--generator',
-        generator
+        generator,
+        '--save_result',
+        '--with_competitor'
     ]
 
     command = ismo.submit.Command(command_to_submit_list)
