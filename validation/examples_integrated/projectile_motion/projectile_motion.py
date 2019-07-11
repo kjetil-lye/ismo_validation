@@ -1,3 +1,6 @@
+
+import matplotlib
+matplotlib.use('Agg')
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import numpy as np
@@ -10,7 +13,6 @@ import matplotlib.pyplot as plt
 import plot_info
 from objective import Objective
 from ball import simulate
-
 
 class LossWriter:
     def __init__(self, basename):
