@@ -10,6 +10,25 @@ import matplotlib.pyplot as plt
 import plot_info
 from objective import Objective
 from ball import simulate
+
+
+class LossWriter:
+    def __init__(self, basename):
+        self.basename = basename
+        self.iteration = 0
+
+    def __call__(self, loss):
+        np.save(f'{self.basename}_iteration_{self.iteration}.npy', loss.history['loss'])
+        f = plt.figure(self.iteration)
+
+        plt.semilogy(loss.history['loss'])
+        plt.xlabel('Epoch')
+        plt.ylabel("Loss")
+        f.savefig(f'{self.basename}_iteration_{self.iteration}.png')
+        plt.close(f)
+        self.iteration += 1
+
+
 if __name__ == '__main__':
     import argparse
 
@@ -54,8 +73,12 @@ Runs the projectile motion
 
         optimizer = ismo.optimizers.create_optimizer(args.optimizer)
 
+        trainers =[ismo.train.create_trainer_from_simple_file(args.simple_configuration_file) for _ in range(1)]
+        for trainer in trainers:
+            trainer.add_loss_history_writer(LossWriter(f'{prefix}loss_try_{try_number}'))
         trainer = ismo.train.MultiVariateTrainer(
-            [ismo.train.create_trainer_from_simple_file(args.simple_configuration_file) for _ in range(1)])
+            trainers
+            )
 
         parameters, values = ismo.iterative_surrogate_model_optimization(
             number_of_samples_per_iteration=args.number_of_samples_per_iteration,
@@ -89,9 +112,14 @@ Runs the projectile motion
                 generator = ismo.samples.create_sample_generator(args.generator)
         
                 optimizer = ismo.optimizers.create_optimizer(args.optimizer)
-        
+
+                trainers = [ismo.train.create_trainer_from_simple_file(args.simple_configuration_file) for _ in
+                            range(1)]
+                for trainer in trainers:
+                    trainer.add_loss_history_writer(LossWriter(f'{prefix}loss_competitor_iteration_{iteration_number}_try_{try_number}'))
                 trainer = ismo.train.MultiVariateTrainer(
-                    [ismo.train.create_trainer_from_simple_file(args.simple_configuration_file) for _ in range(1)])
+                    trainers
+                )
         
                 parameters, values = ismo.iterative_surrogate_model_optimization(
                     number_of_samples_per_iteration=[number_of_samples, number_of_samples_post],
