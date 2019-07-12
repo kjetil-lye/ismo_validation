@@ -95,7 +95,7 @@ Runs the projectile motion
 
         values = np.array(values)
 
-        objective_values = [objective(values[i, 0], values[i, 1], values[i, 2]) for i in range(values.shape[0])]
+        objective_values = [objective(values[i, 0]) for i in range(values.shape[0])]
 
         per_iteration = collections.defaultdict(list)
 
@@ -145,7 +145,7 @@ Runs the projectile motion
                     dimension=2,
                     starting_sample=try_number*(number_of_samples_post+number_of_samples))
                 values = np.array(values)
-                cobjective_values = [objective(values[i, 0], values[i, 1], values[i, 2]) for i in range(values.shape[0])]
+                cobjective_values = [objective(values[i, 0]) for i in range(values.shape[0])]
 
                 arg_min = np.argmin(objective_values)
 
