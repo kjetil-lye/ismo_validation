@@ -152,7 +152,7 @@ Runs the projectile motion
                 competitor_min_values['objective'][try_number, iteration_number] = objective_values[arg_min]
 
 
-                competitor_min_values['length'].append(values[arg_min])
+                competitor_min_values['length'][try_number, iteration_number] = values[arg_min]
 
     
                 if args.save_result:
