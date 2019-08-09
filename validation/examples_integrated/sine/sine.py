@@ -1,5 +1,7 @@
 import matplotlib
 matplotlib.use('Agg')
+import ismo.convergence
+
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import numpy as np
@@ -19,21 +21,10 @@ class Objective:
         return np.ones_like(x)
 
 
-class LossWriter:
-    def __init__(self, basename):
-        self.basename = basename
-        self.iteration = 0
+class Simulator:
+    def __call__(self, x):
+        return np.sin(4 * np.pi * x)
 
-    def __call__(self, loss):
-        np.save(f'{self.basename}_iteration_{self.iteration}.npy', loss.history['loss'])
-        f = plt.figure(self.iteration)
-
-        plt.semilogy(loss.history['loss'])
-        plt.xlabel('Epoch')
-        plt.ylabel("Loss")
-        f.savefig(f'{self.basename}_iteration_{self.iteration}.png')
-        plt.close(f)
-        self.iteration += 1
 
 if __name__ == '__main__':
     import argparse
@@ -68,98 +59,27 @@ Runs the function sin(4*pi*x) on the input parameters
 
     args = parser.parse_args()
     prefix = args.prefix
-
-
-    all_values_min = []
-
-    samples_as_str = "_".join(map(str, args.number_of_samples_per_iteration))
-    for try_number in range(args.retries):
-        print(f"try_number: {try_number}")
-        generator = ismo.samples.create_sample_generator(args.generator)
-
-        optimizer = ismo.optimizers.create_optimizer(args.optimizer)
-        trainers = [ismo.train.create_trainer_from_simple_file(args.simple_configuration_file)]
-
-        for trainer in trainers:
-            trainer.add_loss_history_writer(LossWriter(f'{prefix}loss_try_{try_number}'))
-
-        trainer = ismo.train.MultiVariateTrainer(
-            trainers
-        )
-
-        parameters, values = ismo.iterative_surrogate_model_optimization(
-            number_of_samples_per_iteration=args.number_of_samples_per_iteration,
-            sample_generator=generator,
-            trainer=trainer,
-            optimizer=optimizer,
-            simulator=lambda x: np.sin(4 * np.pi * x),
-            objective_function=Objective(),
-            dimension=1,
-            starting_sample=try_number*np.sum(np.array(args.number_of_samples_per_iteration)))
-
-        per_iteration = []
-        total_number_of_samples = 0
-        for number_of_samples in args.number_of_samples_per_iteration:
-            total_number_of_samples += number_of_samples
-            per_iteration.append(np.min(values[:total_number_of_samples]))
-        all_values_min.append(per_iteration)
-
-        if args.save_result:
-            np.savetxt(f'{prefix}parameters_{try_number}_samples_{samples_as_str}.txt', parameters)
-            np.savetxt(f'{prefix}values_{try_number}_samples_{samples_as_str}.txt', values)
-
-    if args.with_competitor:
-        competitor_min_values = np.zeros((args.retries, len(args.number_of_samples_per_iteration)-1))
-        for try_number in range(args.retries):
-            
-            print(f"try_number (competitor): {try_number}")
-            
-            for iteration_number, number_of_samples_post in enumerate(args.number_of_samples_per_iteration[1:]):
-                number_of_samples = sum(args.number_of_samples_per_iteration[:iteration_number+1])
-                generator = ismo.samples.create_sample_generator(args.generator)
-        
-                optimizer = ismo.optimizers.create_optimizer(args.optimizer)
-                trainers =[ismo.train.create_trainer_from_simple_file(args.simple_configuration_file)]
-
-                for trainer in trainers:
-                    trainer.add_loss_history_writer(LossWriter(f'{prefix}loss_competitor_iteration_{iteration_number}_try_{try_number}'))
-
-                trainer = ismo.train.MultiVariateTrainer(
-                    trainers
-                    )
-
-
-        
-                parameters, values = ismo.iterative_surrogate_model_optimization(
-                    number_of_samples_per_iteration=[number_of_samples, number_of_samples_post],
-                    sample_generator=generator,
-                    trainer=trainer,
-                    optimizer=optimizer,
-                    simulator=lambda x: np.sin(4 * np.pi * x),
-                    objective_function=Objective(),
-                    dimension=1,
-                    starting_sample=try_number*(number_of_samples_post+number_of_samples))
-        
-                competitor_min_values[try_number, iteration_number] = np.min(values)
     
-                if args.save_result:
-                    np.savetxt(f'{prefix}competitor_parameters_{try_number}_it_{iteration_number}_samples_{samples_as_str}.txt', parameters)
-                    np.savetxt(f'{prefix}competitor_values_{try_number}_it_{iteration_number}_samples_{samples_as_str}.txt', values)
     
-            
-        
-    print("Done!")
-    iterations = np.arange(0, len(args.number_of_samples_per_iteration))
-    plt.errorbar(iterations, np.mean(all_values_min,0), 
-                 yerr=np.std(all_values_min,0), fmt='o',
-                 label='ISMO')
+    dimension = 1
+    number_of_variables = 1
     
-    if args.with_competitor:
-        plt.errorbar(iterations[:-1], np.mean(competitor_min_values,0), 
-                 yerr=np.std(competitor_min_values,0), fmt='*',
-                 label='DNN+Opt')
-    plt.legend()
-    plt.xlabel('Iteration')
-    plt.ylabel('Min value')
+    objective = Objective()
     
-    plot_info.savePlot(f'{prefix}optimized_value_{samples_as_str}')
+    ismo.convergence.convergence_study(
+        generator_name = args.generator,
+        training_parameter_filename = args.simple_configuration_file,
+        optimizer_name = args.optimizer,
+        retries = args.retries,
+        save_result = args.save_result,
+        prefix = args.prefix,
+        with_competitor = args.with_competitor,
+        dimension = dimension,
+        number_of_variables = number_of_variables,
+        number_of_samples_per_iteration = args.number_of_samples_per_iteration,
+        simulator_creator = lambda starting_sample: Simulator(),
+        objective = objective,
+        variable_names = ['u'],
+        save_plot=plot_info.savePlot
+    )
+
