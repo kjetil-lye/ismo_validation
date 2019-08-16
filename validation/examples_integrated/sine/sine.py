@@ -1,3 +1,13 @@
+#####################
+import tensorflow
+from keras import backend as K
+# see https://stackoverflow.com/a/52897216 we really need singlethread to get
+# reproducible results!
+session_conf = tensorflow.ConfigProto(intra_op_parallelism_threads=1, inter_op_parallelism_threads=1)
+sess = tensorflow.Session(graph=tensorflow.get_default_graph(), config=session_conf)
+K.set_session(sess)
+#####################
+
 import matplotlib
 matplotlib.use('Agg')
 import ismo.convergence
