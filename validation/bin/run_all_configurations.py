@@ -1,5 +1,5 @@
 """
-Runs all configuration for analysis
+Runs all configurations for analysis
 """
 
 import sys
@@ -7,19 +7,25 @@ import os
 import subprocess
 import ismo.submit
 import validation.config
-from validation.config import batch_sizes, iterations, number_of_reruns, generators
+from validation.config import batch_sizes, number_of_reruns, generators, get_iterations
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        print("Usage:\n\tpython {} <name of python script> <other arguments passed to python script>".format(sys.argv[0]))
+    if len(sys.argv) < 3:
+        print("Usage:\n\tpython {} <name of python script> <compute budget> <other arguments passed to python script>".format(sys.argv[0]))
+        print("<compute budget> should be in terms of number of total samples calculated (integer). Reruns not included.")
         exit(1)
     python_script = sys.argv[1]
+    compute_budget = int(sys.argv[2])
     for generator in generators:
         for batch_size in batch_sizes:
 
-            starting_sizes = validation.config.make_starting_sizes(batch_size)
+            if 2 * batch_size > compute_budget:
+                continue
+
+            starting_sizes = validation.config.make_starting_sizes(batch_size, compute_budget)
 
             for starting_size in starting_sizes:
+                iterations = get_iterations(starting_size, batch_size, compute_budget)
                 starting_sample=0
                 for rerun in range(number_of_reruns):
                     prefix = validation.config.make_prefix_main(batch_size=batch_size,
@@ -45,7 +51,7 @@ if __name__ == '__main__':
                         generator=generator)
 
                     command_list = command.tolist()
-                    command_list.extend(sys.argv[2:])
+                    command_list.extend(sys.argv[3:])
 
                     subprocess.run(command_list, check=True)
 
@@ -74,7 +80,7 @@ if __name__ == '__main__':
                             generator=generator)
 
                         command_list = command.tolist()
-                        command_list.extend(sys.argv[2:])
+                        command_list.extend(sys.argv[3:])
 
                         subprocess.run(command_list, check=True)
 
