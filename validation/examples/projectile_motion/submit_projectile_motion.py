@@ -48,15 +48,23 @@ Submits all the jobs for the sine experiments
     parser.add_argument('--generator', type=str, default='monte-carlo',
                         help='Generator name')
 
+    parser.add_argument('--container_type', type=str, default=None,
+                        help="Container type (none, docker, singularity)")
+
+    parser.add_argument('--container', type=str, default='docker://kjetilly/machine_learning_base:0.1.2',
+                        help='Container name')
+
     args = parser.parse_args()
 
-    submitter = ismo.submit.create_submitter(args.submitter, args.chain_name, dry_run=args.dry_run)
+    submitter = ismo.submit.create_submitter(args.submitter, args.chain_name, dry_run=args.dry_run,
+                            container_type=args.container_type,
+                            container=args.container)
 
     commands = ProjectileMotionCommands(dimension=2,
                                         training_parameter_config_file='training_parameters.json',
                                         optimize_target_file='objective.py',
                                         optimize_target_class='Objective',
-                                        python_command=sys.executable,
+                                        python_command='python',
                                         starting_sample=args.starting_sample,
                                         prefix=args.prefix,
                                         sample_generator_name=args.generator
