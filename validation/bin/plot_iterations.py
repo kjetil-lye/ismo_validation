@@ -28,9 +28,10 @@ if __name__ == '__main__':
 
             for starting_size in starting_sizes:
                 starting_sample=0
+                iterations = get_iterations(starting_size, batch_size, compute_budget)
                 min_value_per_iteration = np.zeros((iterations, number_of_reruns))
                 for rerun in range(number_of_reruns):
-                    iterations = get_iterations(starting_size, batch_size, compute_budget)
+
                     for iteration in range(iterations):
                         output_objective = validation.config.get_objective_filename(batch_size=batch_size,
                                                                                     starting_size=starting_size,
@@ -49,7 +50,7 @@ if __name__ == '__main__':
                 number_of_samples = 0
                 min_value_per_iteration_competitor = np.zeros((iterations, number_of_reruns))
                 for rerun in range(number_of_reruns):
-                    iterations = get_iterations(starting_size, batch_size, compute_budget)
+
                     for iteration in range(iterations):
                         all_values = []
                         for pass_number in [0, 1]:
