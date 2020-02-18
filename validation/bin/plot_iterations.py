@@ -11,23 +11,26 @@ import subprocess
 import ismo.submit
 import validation.config
 import plot_info
-from validation.config import batch_sizes, iterations, number_of_reruns, generators
+from validation.config import batch_sizes, number_of_reruns, generators, get_iterations
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        print("Usage:\n\tpython {} <name of python script>")
+    if len(sys.argv) < 3:
+        print("Usage:\n\tpython {} <name of python script> <compute budget> <other arguments passed to python script>".format(sys.argv[0]))
+        print("<compute budget> should be in terms of number of total samples calculated (integer). Reruns not included.")
         exit(1)
     python_script = sys.argv[1]
+    compute_budget = int(sys.argv[2])
     for generator in generators:
         for batch_size in batch_sizes:
 
             starting_sizes = validation.config.make_starting_sizes(batch_size)
 
+
             for starting_size in starting_sizes:
                 starting_sample=0
                 min_value_per_iteration = np.zeros((iterations, number_of_reruns))
                 for rerun in range(number_of_reruns):
-
+                    iterations = get_iterations(starting_size, batch_size, compute_budget)
                     for iteration in range(iterations):
                         output_objective = validation.config.get_objective_filename(batch_size=batch_size,
                                                                                     starting_size=starting_size,
@@ -46,6 +49,7 @@ if __name__ == '__main__':
                 number_of_samples = 0
                 min_value_per_iteration_competitor = np.zeros((iterations, number_of_reruns))
                 for rerun in range(number_of_reruns):
+                    iterations = get_iterations(starting_size, batch_size, compute_budget)
                     for iteration in range(iterations):
                         all_values = []
                         for pass_number in [0, 1]:
