@@ -23,7 +23,7 @@ if __name__ == '__main__':
     for generator in generators:
         for batch_size in batch_sizes:
 
-            starting_sizes = validation.config.make_starting_sizes(batch_size)
+            starting_sizes = validation.config.make_starting_sizes(batch_size, compute_budget)
 
 
             for starting_size in starting_sizes:
