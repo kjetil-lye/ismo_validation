@@ -1,6 +1,7 @@
 import ismo.submit
 import ismo.submit.defaults
 import sys
+import os
 
 
 class ProjectileMotionCommands(ismo.submit.defaults.Commands):
@@ -21,6 +22,15 @@ class ProjectileMotionCommands(ismo.submit.defaults.Commands):
 
 
 if __name__ == '__main__':
+    files_to_delete = ['parameters.txt', 'model_{}.h5', 'values_{}.txt',
+                       'parameters_for_optimization.txt', 'optimization_results.pic']
+
+    for filename_template in files_to_delete:
+        for component in range(1):
+            filename = filename_template.format(component)
+            if os.path.exists(filename):
+                os.remove(filename)
+
     import argparse
 
     parser = argparse.ArgumentParser(description="""
@@ -54,6 +64,12 @@ Submits all the jobs for the sine experiments
     parser.add_argument('--container', type=str, default='docker://kjetilly/machine_learning_base:0.1.2',
                         help='Container name')
 
+    parser.add_argument('--number_of_processes', type=int, nargs='+',
+                        help='Ignored, added for compatibility')
+
+    parser.add_argument('--optimizer', type=str, default='L-BFGS-B',
+                        help='Name of optimizer')
+
     args = parser.parse_args()
 
     submitter = ismo.submit.create_submitter(args.submitter, args.chain_name, dry_run=args.dry_run,
@@ -67,7 +83,11 @@ Submits all the jobs for the sine experiments
                                         python_command='python',
                                         starting_sample=args.starting_sample,
                                         prefix=args.prefix,
-                                        sample_generator_name=args.generator
+                                        sample_generator_name=args.generator,
+                                        output_append=True,
+                                        reuse_model=True,
+                                        optimization_results_filename='optimization_results.pic',
+                                        optimizer_name=args.optimizer
                                         )
 
     chain = ismo.submit.Chain(args.number_of_samples_per_iteration, submitter,

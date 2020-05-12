@@ -1,6 +1,7 @@
 import ismo.submit
 import ismo.submit.defaults
 import sys
+import os
 
 class SineCommands(ismo.submit.defaults.Commands):
     def __init__(self, **kwargs):
@@ -16,10 +17,19 @@ class SineCommands(ismo.submit.defaults.Commands):
         command = command.with_long_arguments(input_parameters_file=input_parameters_file,
                                               output_values_file=output_value_files)
 
+        command = self.add_start_end_values(command)
+
         submitter(command, wait_time_in_hours=24)
 
 
 if __name__ == '__main__':
+    files_to_delete = ['parameters.txt', 'model_0.h5', 'values_0.txt',
+                       'parameters_for_optimization.txt', 'optimization_results.pic']
+
+    for filename_template in files_to_delete:
+        filename = filename_template
+        if os.path.exists(filename):
+            os.remove(filename)
     import argparse
 
     parser = argparse.ArgumentParser(description="""
@@ -53,11 +63,19 @@ Submits all the jobs for the sine experiments
     parser.add_argument('--container', type=str, default='docker://kjetilly/machine_learning_base:0.1.2',
                         help='Container name')
 
+    parser.add_argument('--number_of_processes', type=int, nargs='+',
+                        help='Ignored, added for compatibility')
+
+    parser.add_argument('--optimizer', type=str, default='L-BFGS-B',
+                        help='Name of optimizer')
+
+
+
     args = parser.parse_args()
 
     submitter = ismo.submit.create_submitter(args.submitter, args.chain_name, dry_run=args.dry_run,
-                            container_type=args.container_type,
-                            container=args.container)
+                                             container_type=args.container_type,
+                                             container=args.container)
 
     commands = SineCommands(dimension=1,
                             training_parameter_config_file='training_parameters.json',
@@ -66,7 +84,11 @@ Submits all the jobs for the sine experiments
                             python_command='python',
                             starting_sample=args.starting_sample,
                             prefix=args.prefix,
-                            sample_generator_name=args.generator
+                            sample_generator_name=args.generator,
+                            output_append=True,
+                            reuse_model=True,
+                            optimization_results_filename='optimization_results.pic',
+                            optimizer_name=args.optimizer
                             )
 
     chain = ismo.submit.Chain(args.number_of_samples_per_iteration, submitter,
