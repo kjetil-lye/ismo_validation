@@ -85,7 +85,7 @@ Submits all the jobs for the sine experiments
                                         prefix=args.prefix,
                                         sample_generator_name=args.generator,
                                         output_append=True,
-                                        reuse_model=False,
+                                        reuse_model=True,
                                         optimization_results_filename='optimization_results.pic',
                                         optimizer_name=args.optimizer
                                         )
