@@ -1,4 +1,5 @@
 {
+    "l2_regularization" : 7.81249980263965e-07,
     "optimizer" : "Adam",
     "loss" : "mean_squared_error",
     "network_topology" : [2, 10, 10,10,10,10, 10, 10,1],
@@ -6,6 +7,6 @@
     "epochs" : 50000,
     "should_use_early_stopping" : true,
     "learning_rate" : 0.001,
-    "early_stopping_patience" : 50,
+    "early_stopping_patience" : 20,
     "retrainings" : 5
 }
